@@ -24,7 +24,7 @@ html(lang="ja")
         - let isDeletable = (user === post.postedBy || user === 'admin')
         if isDeletable
           div.card-header
-            form(method="post" action="/posts?delete=1")
+            form(method="post" action="/posts/delete")
               input(type="hidden" name="id" value=post.id)
               button(type="submit").btn.btn-danger.float-right 削除
         div.card-body
