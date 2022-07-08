@@ -7,19 +7,21 @@ html(lang="ja")
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
     crossorigin="anonymous")
     title NNチャット
-  body.container
+  body(class=`${nowBodyClass}`)
     div.my-3
       a(href="/logout").btn.btn-info.float-right ログアウト
       h1 NNチャット
     form(method="post" action="/posts")
       div.form-group
-        textarea(name="content" rows=4).form-control
+        textarea(name="content" rows=4 class=`${nowTextClass}`)
       div.form-group
         button(type="submit").btn.btn-primary 送信
+    div.form-group
+      button(type="submit" onClick="location.href='/changeTheme'").btn.btn-primary ライトモード・ダークモードの切り替え
 
     h2 投稿一覧
     each post in posts
-      - let cardClass = (user === post.postedBy ? 'card my-3 bg-primary text-white' : 'card my-3')
+      - let cardClass = (((user === post.postedBy)^(nowTHeme==='light')) ? 'card my-3 bg-primary text-white' : 'card my-3')
       div(class=`${cardClass}`)
         - let isDeletable = (user === post.postedBy || user === 'admin')
         if isDeletable
