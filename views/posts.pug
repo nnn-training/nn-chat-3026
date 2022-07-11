@@ -21,7 +21,7 @@ html(lang="ja")
 
     h2 投稿一覧
     each post in posts
-      - let cardClass = (((user === post.postedBy)^(nowTHeme==='light')) ? 'card my-3 bg-primary text-white' : 'card my-3')
+      - let cardClass = ((user === post.postedBy) ? 'card my-3 bg-primary text-white' : ((nowTHeme==='light')?'card my-3 ':'card my-3  bg-secondary text-white'))
       div(class=`${cardClass}`)
         - let isDeletable = (user === post.postedBy || user === 'admin')
         if isDeletable
