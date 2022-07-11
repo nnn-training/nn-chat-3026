@@ -7,13 +7,13 @@ html(lang="ja")
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
     crossorigin="anonymous")
     title NNチャット
-  body(class=`${nowBodyClass}`)
+  body(class=`${currentBodyClass}`)
     div.my-3
       a(href="/logout").btn.btn-info.float-right ログアウト
       h1 NNチャット
     form(method="post" action="/posts")
       div.form-group
-        textarea(name="content" rows=4 class=`${nowTextClass}`)
+        textarea(name="content" rows=4 class=`${currentTextClass}`)
       div.form-group
         button(type="submit").btn.btn-primary 送信
     div.form-group
@@ -21,7 +21,7 @@ html(lang="ja")
 
     h2 投稿一覧
     each post in posts
-      - let cardClass = ((user === post.postedBy) ? 'card my-3 bg-primary text-white' : ((nowTHeme==='light')?'card my-3 ':'card my-3  bg-secondary text-white'))
+      - let cardClass = ((user === post.postedBy) ? 'card my-3 bg-primary text-white' : ((currentTHeme==='light')?'card my-3 ':'card my-3  bg-secondary text-white'))
       div(class=`${cardClass}`)
         - let isDeletable = (user === post.postedBy || user === 'admin')
         if isDeletable
